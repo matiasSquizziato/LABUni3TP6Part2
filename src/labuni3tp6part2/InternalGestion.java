@@ -330,18 +330,19 @@ public class InternalGestion extends javax.swing.JInternalFrame {
         double valPrecio = Double.parseDouble(jtPrecio.getText());
         String valDescrip = jtDescrip.getText();
         
-       // Obtener el objeto Categoria directamente del JComboBox
+       // Obtener el objeto Categoria del JComboBox
         Categoria valCategoria = (Categoria) jcbCategoriasButt.getSelectedItem();
         
         // Obtener el valor del JSpinner
         int valCantidad = (int) jSpinner1.getValue();
 
-        // Crear el objeto Producto (supuesto que exista una clase Producto)
+        // Crear el objeto Producto 
         Producto nuevoProducto = new Producto(valCategoria, valCodigo, valDescrip, valPrecio, valCantidad);
 
-        // Agregar el nuevo producto a la lista (supuesto método agregarProducto)
+        // Agregar el nuevo producto a la lista
         nuevoProducto.cargarElementos(nuevoProducto);
 
+        //Actualizo la tabla
         DefaultTableModel modeloTabla = (DefaultTableModel) jTableList.getModel();
         Object[] fila = {valCategoria, valCodigo, valDescrip, valPrecio, valCantidad};
         modeloTabla.addRow(fila);
@@ -557,7 +558,8 @@ dispose();        // TODO add your handling code here:
 }
 
 // Filtro productos por categoría seleccionada
-// Filtro productos por categoría seleccionada
+
+    
 private void filtrarTabla() {
     Categoria valCategoria = (Categoria) jcbCategoriasButt.getSelectedItem();
 
