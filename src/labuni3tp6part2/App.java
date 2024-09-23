@@ -31,6 +31,9 @@ public class App extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuGestion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMINombre = new javax.swing.JMenuItem();
+        jMIPrecio = new javax.swing.JMenuItem();
+        jMIRubro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +61,26 @@ public class App extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Consultas");
+
+        jMINombre.setText("Nombre");
+        jMINombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMINombreActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMINombre);
+
+        jMIPrecio.setText("Precio");
+        jMIPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIPrecioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMIPrecio);
+
+        jMIRubro.setText("Rubro");
+        jMenu2.add(jMIRubro);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -87,6 +110,19 @@ public class App extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuGestionActionPerformed
+
+    private void jMINombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMINombreActionPerformed
+        JIConsultaNombre vistaNombre = new JIConsultaNombre();
+        escritorio.add(vistaNombre);
+        vistaNombre.setVisible(true);
+        
+    }//GEN-LAST:event_jMINombreActionPerformed
+
+    private void jMIPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIPrecioActionPerformed
+        JIConsultaPrecio vistaPrecio = new JIConsultaPrecio();
+        escritorio.add(vistaPrecio);
+        vistaPrecio.setVisible(true);
+    }//GEN-LAST:event_jMIPrecioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +161,9 @@ public class App extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jMINombre;
+    private javax.swing.JMenuItem jMIPrecio;
+    private javax.swing.JMenuItem jMIRubro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

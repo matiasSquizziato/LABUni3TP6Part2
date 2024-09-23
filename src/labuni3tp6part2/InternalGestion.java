@@ -12,15 +12,15 @@ import javax.swing.table.DefaultTableModel;
 import static labuni3tp6part2.Producto.listaProductos;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author matiSqui
  */
 public class InternalGestion extends javax.swing.JInternalFrame {
 
-        private DefaultTableModel modelo = new DefaultTableModel();
-        private javax.swing.JTextField txtCodigo;
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private javax.swing.JTextField txtCodigo;
+
     /**
      * Creates new form InternalGestion
      */
@@ -320,81 +320,79 @@ public class InternalGestion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-        
+
         if (jtCodigo.getText().trim().isEmpty() || jtDescrip.getText().trim().isEmpty() || jtPrecio.getText().trim().isEmpty()) {
-    JOptionPane.showMessageDialog(rootPane, "Los campos no deben estar vacíos.");
-    } else {
-    try {
-        // Validar si el código y el precio son numéricos
-        int valCodigo = Integer.parseInt(jtCodigo.getText());
-        double valPrecio = Double.parseDouble(jtPrecio.getText());
-        String valDescrip = jtDescrip.getText();
-        
-       // Obtener el objeto Categoria del JComboBox
-        Categoria valCategoria = (Categoria) jcbCategoriasButt.getSelectedItem();
-        
-        // Obtener el valor del JSpinner
-        int valCantidad = (int) jSpinner1.getValue();
+            JOptionPane.showMessageDialog(rootPane, "Los campos no deben estar vacíos.");
+        } else {
+            try {
+                // Validar si el código y el precio son numéricos
+                int valCodigo = Integer.parseInt(jtCodigo.getText());
+                double valPrecio = Double.parseDouble(jtPrecio.getText());
+                String valDescrip = jtDescrip.getText();
 
-        // Crear el objeto Producto 
-        Producto nuevoProducto = new Producto(valCategoria, valCodigo, valDescrip, valPrecio, valCantidad);
+                // Obtener el objeto Categoria del JComboBox
+                Categoria valCategoria = (Categoria) jcbCategoriasButt.getSelectedItem();
 
-        // Agregar el nuevo producto a la lista
-        nuevoProducto.cargarElementos(nuevoProducto);
+                // Obtener el valor del JSpinner
+                int valCantidad = (int) jSpinner1.getValue();
 
-        //Actualizo la tabla
-        DefaultTableModel modeloTabla = (DefaultTableModel) jTableList.getModel();
-        Object[] fila = {valCategoria, valCodigo, valDescrip, valPrecio, valCantidad};
-        modeloTabla.addRow(fila);
-        
-        
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(rootPane, "Debe ingresar valores numéricos válidos para el código y precio. Exception: " + e);
-        jtCodigo.requestFocus();
-    } catch (NullPointerException e) {
-        JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una categoría. Exception: " + e);
-        jcbCategoriasButt.requestFocus();
-    }
+                // Crear el objeto Producto 
+                Producto nuevoProducto = new Producto(valCategoria, valCodigo, valDescrip, valPrecio, valCantidad);
 
-    jtCodigo.setText("");
-    jtDescrip.setText("");
-    jtPrecio.setText("");
-    jcbCategoriasButt.setSelectedIndex(0);  
-    jSpinner1.setValue(1); 
-}
+                // Agregar el nuevo producto a la lista
+                nuevoProducto.cargarElementos(nuevoProducto);
 
-        
-        
+                //Actualizo la tabla
+                DefaultTableModel modeloTabla = (DefaultTableModel) jTableList.getModel();
+                Object[] fila = {valCategoria, valCodigo, valDescrip, valPrecio, valCantidad};
+                modeloTabla.addRow(fila);
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar valores numéricos válidos para el código y precio. Exception: " + e);
+                jtCodigo.requestFocus();
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una categoría. Exception: " + e);
+                jcbCategoriasButt.requestFocus();
+            }
+
+            jtCodigo.setText("");
+            jtDescrip.setText("");
+            jtPrecio.setText("");
+            jcbCategoriasButt.setSelectedIndex(0);
+            jSpinner1.setValue(1);
+        }
+
+
     }//GEN-LAST:event_btGuardarActionPerformed
 
     private void btCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarActionPerformed
-dispose();        // TODO add your handling code here:
+        dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btCerrarActionPerformed
 
     private void btNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNuevoActionPerformed
 
         //limpio la table
-    modelo.setRowCount(0);
-    
-    //limpio los campos de texto
-    jtCodigo.setText("");
-    jtDescrip.setText("");
-    jtPrecio.setText("");
-    jcbCategoriasButt.setSelectedIndex(0);
-    jSpinner1.setValue(0);
+        modelo.setRowCount(0);
+
+        //limpio los campos de texto
+        jtCodigo.setText("");
+        jtDescrip.setText("");
+        jtPrecio.setText("");
+        jcbCategoriasButt.setSelectedIndex(0);
+        jSpinner1.setValue(0);
 
     }//GEN-LAST:event_btNuevoActionPerformed
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
 
         //al actualizar devuelve toda la lista de productos
-            cargarJtableList();
+        cargarJtableList();
 
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
         //eliminar un elemento por el codigo
-        
+
 
     }//GEN-LAST:event_btEliminarActionPerformed
 
@@ -413,42 +411,42 @@ dispose();        // TODO add your handling code here:
     private void btBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBuscarMouseEntered
 
         jlMensaje1.setText("Para buscar un elemento debe ingresar el codigo");
-        
+
     }//GEN-LAST:event_btBuscarMouseEntered
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-                   
-     try {
-        // Verificar si jtCodigo tiene un valor válido
-        int codigoBuscado;
+
         try {
-            codigoBuscado = Integer.parseInt(jtCodigo.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor ingresa un número válido.");
-            return; // Detener la ejecución si hay error
+            // Verificar si jtCodigo tiene un valor válido
+            int codigoBuscado;
+            try {
+                codigoBuscado = Integer.parseInt(jtCodigo.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor ingresa un número válido.");
+                return; // Detener la ejecución si hay error
+            }
+
+            // Buscar producto en la lista
+            Producto productoEncontrado = Producto.buscarProducto(codigoBuscado);
+
+            if (productoEncontrado != null) {
+                // Limpiar la tabla antes de agregar el nuevo producto (opcional)
+                modelo.setRowCount(0);
+                mostrarProductoEnTabla(productoEncontrado);
+            } else {
+                JOptionPane.showMessageDialog(null, "Producto no encontrado");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Muestra el error en la consola para depuración
+            JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado.");
         }
-        
-        // Buscar producto en la lista
-      Producto productoEncontrado = Producto.buscarProducto(codigoBuscado);
-        
-        if (productoEncontrado != null) {
-            // Limpiar la tabla antes de agregar el nuevo producto (opcional)
-            modelo.setRowCount(0);
-            mostrarProductoEnTabla(productoEncontrado);
-        } else {
-            JOptionPane.showMessageDialog(null, "Producto no encontrado");
-        }
-        
-    } catch (Exception e) {
-        e.printStackTrace(); // Muestra el error en la consola para depuración
-        JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado.");
-    }
 
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void jcbCategoriasTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCategoriasTopActionPerformed
 
-     filtrarTabla();
+        filtrarTabla();
 
     }//GEN-LAST:event_jcbCategoriasTopActionPerformed
 
@@ -492,25 +490,24 @@ dispose();        // TODO add your handling code here:
     // End of variables declaration//GEN-END:variables
 
     //Cabecera de la tabla
-    private void armarCabecera(){
+    private void armarCabecera() {
 
-    modelo.addColumn("Categoria");
-    modelo.addColumn("Codigo");
-    modelo.addColumn("Descripcion");
-    modelo.addColumn("Precio");
-    modelo.addColumn("Stock");
-    
-    jTableList.setModel(modelo);
-}
-    
-    
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
+
+        jTableList.setModel(modelo);
+    }
+
     //Cargar los jComboBox
-    public void cargarJcombos(){
-        
+    public void cargarJcombos() {
+
         Categoria Limpieza = new Categoria("Limpieza");
         Categoria Comestible = new Categoria("Comestible");
         Categoria Perfumeria = new Categoria("Perfumeria");
-        
+
         //jcbTop
         jcbCategoriasTop.addItem(Limpieza);
         jcbCategoriasTop.addItem(Comestible);
@@ -519,17 +516,30 @@ dispose();        // TODO add your handling code here:
         jcbCategoriasButt.addItem(Limpieza);
         jcbCategoriasButt.addItem(Comestible);
         jcbCategoriasButt.addItem(Perfumeria);
-        
-        
+
     }
 
-
     //cargo la tabla
-   public void cargarJtableList() {
+    public void cargarJtableList() {
 
-       modelo.setRowCount(0);
+        modelo.setRowCount(0);
 
-    for (Producto producto : listaProductos) {
+        for (Producto producto : listaProductos) {
+            Object[] fila = {
+                producto.getCategoria(),
+                producto.getCodigo(),
+                producto.getDescrip(),
+                producto.getPrecio(),
+                producto.getStock()
+            };
+            modelo.addRow(fila);
+        }
+
+        jTableList.updateUI();
+    }
+
+    // Muestro el producto filtrado en la tabla
+    private void mostrarProductoEnTabla(Producto producto) {
         Object[] fila = {
             producto.getCategoria(),
             producto.getCodigo(),
@@ -538,63 +548,43 @@ dispose();        // TODO add your handling code here:
             producto.getStock()
         };
         modelo.addRow(fila);
+        jTableList.setModel(modelo);
     }
-
-    
-    jTableList.updateUI();
-}
-    
-    // Muestro el producto filtrado en la tabla
-    private void mostrarProductoEnTabla(Producto producto) {
-    Object[] fila = {
-        producto.getCategoria(), 
-        producto.getCodigo(),
-        producto.getDescrip(),
-        producto.getPrecio(),
-        producto.getStock()
-    };
-    modelo.addRow(fila);
-    jTableList.setModel(modelo);
-}
 
 // Filtro productos por categoría seleccionada
+    private void filtrarTabla() {
+        Categoria valCategoria = (Categoria) jcbCategoriasButt.getSelectedItem();
 
-    
-private void filtrarTabla() {
-    Categoria valCategoria = (Categoria) jcbCategoriasButt.getSelectedItem();
+        ArrayList<Producto> elementosFil = new ArrayList<>();
 
-    ArrayList<Producto> elementosFil = new ArrayList<>();
+        // Comparación de categorías utilizando getCategoria()
+        for (Producto producto : listaProductos) {
 
-    // Comparación de categorías utilizando getCategoria()
-    for (Producto producto : listaProductos) {
-      
-        if (producto.getCategoria().getCategoria().equals(valCategoria.getCategoria())) {
-            elementosFil.add(producto);  // Si las categorías coinciden, se agrega a la lista
-            
+            if (producto.getCategoria().getCategoria().equals(valCategoria.getCategoria())) {
+                elementosFil.add(producto);  // Si las categorías coinciden, se agrega a la lista
+
+            }
         }
+
+        // Cargar la tabla con los productos filtrados
+        cargarTablaCate(elementosFil);
     }
-
-    // Cargar la tabla con los productos filtrados
-    cargarTablaCate(elementosFil);  
-}
-
 
 // Cargo la tabla con los productos filtrados
-private void cargarTablaCate(ArrayList<Producto> elementosFil) {
-    modelo.setRowCount(0);  
-    for (Producto producto : elementosFil) {  
-        Object[] fila = {
-            producto.getCategoria().getCategoria(),
-            producto.getCodigo(),
-            producto.getDescrip(),
-            producto.getPrecio(),
-            producto.getStock()
-        };
-        modelo.addRow(fila);
-    }
-    
-    jTableList.updateUI();  // Actualizar la tabla
-}
+    private void cargarTablaCate(ArrayList<Producto> elementosFil) {
+        modelo.setRowCount(0);
+        for (Producto producto : elementosFil) {
+            Object[] fila = {
+                producto.getCategoria().getCategoria(),
+                producto.getCodigo(),
+                producto.getDescrip(),
+                producto.getPrecio(),
+                producto.getStock()
+            };
+            modelo.addRow(fila);
+        }
 
-        
+        jTableList.updateUI();  // Actualizar la tabla
+    }
+
 }
